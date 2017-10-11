@@ -1143,15 +1143,27 @@ class SyncTests: XCTestCase {
 	func testBug239Passenger() {
 		let passengerObject = Helper.objectsFromJSON("bug-239-passenger.json") as! [[String: Any]]
 		let dataStack = Helper.dataStackWithModelName("239")
+		defer {
+			dataStack.drop()
+		}
 		dataStack.sync(passengerObject, inEntityNamed: "Passenger", completion: nil)
 		XCTAssertEqual(Helper.countForEntity("Racecar", inContext: dataStack.mainContext), 1)
-		XCTAssertEqual(Helper.countForEntity("Passenger", inContext: dataStack.mainContext), 1)
+		XCTAssertEqual(Helper.countForEntity("Sedan", inContext: dataStack.mainContext), 1)
+		XCTAssertEqual(Helper.countForEntity("Passenger", inContext: dataStack.mainContext), 2)
 
 		let racecars = Helper.fetchEntity("Racecar", predicate: nil, inContext: dataStack.mainContext)
-		let racecar = racecars.first!
+		guard let racecar = racecars.first else {
+			XCTAssert(true, "No relationships on racecar")
+			return
+		}
 		XCTAssertEqual((racecar.value(forKey: "passengers") as? NSSet)!.allObjects.count, 1)
 
-		dataStack.drop()
+		let sedans = Helper.fetchEntity("Sedan", predicate: nil, inContext: dataStack.mainContext)
+		guard let sedan = sedans.first else {
+			XCTAssert(true, "No relationships on sedan")
+			return
+		}
+		XCTAssertEqual((sedan.value(forKey: "passengers") as? NSSet)!.allObjects.count, 1)
 	}
 
     // MARK: - https://github.com/3lvis/Sync/issues/225

@@ -1,11 +1,20 @@
 [
-	 {
-		 "id": 7,
-		 "name": "Kimi Raikkonen",
-		 "car":{
-			 "id": 31,
-			 "max_speed": 370,
-		 }
+ {
+	 "id": 7,
+	 "name": "Kimi Raikkonen",
+	 "car":{
+		 "id": 31,
+		 "max_speed": 370,
+		 "subclass_name": "Racecar",
 	 }
+ },
+ {
+	 "id": 2,
+	 "name": "Robert Kubica",
+	 "car":{
+		 "id": 33,
+		 "subclass_name": "Sedan",
+	 }
+ },
 ]
 
