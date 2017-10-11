@@ -1140,6 +1140,20 @@ class SyncTests: XCTestCase {
         dataStack.drop()
     }
 
+	func testBug239Passenger() {
+		let passengerObject = Helper.objectsFromJSON("bug-239-passenger.json") as! [[String: Any]]
+		let dataStack = Helper.dataStackWithModelName("239")
+		dataStack.sync(passengerObject, inEntityNamed: "Passenger", completion: nil)
+		XCTAssertEqual(Helper.countForEntity("Racecar", inContext: dataStack.mainContext), 1)
+		XCTAssertEqual(Helper.countForEntity("Passenger", inContext: dataStack.mainContext), 1)
+
+		let racecars = Helper.fetchEntity("Racecar", predicate: nil, inContext: dataStack.mainContext)
+		let racecar = racecars.first!
+		XCTAssertEqual((racecar.value(forKey: "passengers") as? NSSet)!.allObjects.count, 1)
+
+		dataStack.drop()
+	}
+
     // MARK: - https://github.com/3lvis/Sync/issues/225
 
     func test225ReplacedTag() {

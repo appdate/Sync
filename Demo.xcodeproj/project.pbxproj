@@ -623,6 +623,9 @@
 		44CFE68C1E87BC650068185B /* Inflections.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CFE6861E87BC650068185B /* Inflections.m */; };
 		44CFE68D1E87BC650068185B /* Inflections.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CFE6861E87BC650068185B /* Inflections.m */; };
 		44CFE68E1E87BC650068185B /* Inflections.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CFE6861E87BC650068185B /* Inflections.m */; };
+		B52193CD1F8E2B0E00C8D681 /* bug-239-passenger.json in Resources */ = {isa = PBXBuildFile; fileRef = B52193CC1F8E28C200C8D681 /* bug-239-passenger.json */; };
+		B52193CE1F8E2B0F00C8D681 /* bug-239-passenger.json in Resources */ = {isa = PBXBuildFile; fileRef = B52193CC1F8E28C200C8D681 /* bug-239-passenger.json */; };
+		B52193CF1F8E2B0F00C8D681 /* bug-239-passenger.json in Resources */ = {isa = PBXBuildFile; fileRef = B52193CC1F8E28C200C8D681 /* bug-239-passenger.json */; };
 		CC9493F11F375251002167B4 /* 417.json in Resources */ = {isa = PBXBuildFile; fileRef = CC9493F01F375251002167B4 /* 417.json */; };
 		CC9493F21F375251002167B4 /* 417.json in Resources */ = {isa = PBXBuildFile; fileRef = CC9493F01F375251002167B4 /* 417.json */; };
 		CC9493F31F375251002167B4 /* 417.json in Resources */ = {isa = PBXBuildFile; fileRef = CC9493F01F375251002167B4 /* 417.json */; };
@@ -926,6 +929,7 @@
 		44CFE67D1E87BBE60068185B /* PrimaryKey.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PrimaryKey.xcdatamodel; sourceTree = "<group>"; };
 		44CFE6851E87BC650068185B /* Inflections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Inflections.h; sourceTree = "<group>"; };
 		44CFE6861E87BC650068185B /* Inflections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Inflections.m; sourceTree = "<group>"; };
+		B52193CC1F8E28C200C8D681 /* bug-239-passenger.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "bug-239-passenger.json"; sourceTree = "<group>"; };
 		CC9493F01F375251002167B4 /* 417.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 417.json; sourceTree = "<group>"; };
 		CC9493F51F375517002167B4 /* 375-to-one.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "375-to-one.xcdatamodel"; sourceTree = "<group>"; };
 		CC9493FD1F3755AD002167B4 /* 375-to-one.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "375-to-one.json"; sourceTree = "<group>"; };
@@ -1184,6 +1188,7 @@
 				14867D3C1E7AF4D2001D228A /* bug-202-a.json */,
 				14867D3D1E7AF4D2001D228A /* bug-202-b.json */,
 				14867D3E1E7AF4D2001D228A /* bug-239.json */,
+				B52193CC1F8E28C200C8D681 /* bug-239-passenger.json */,
 				14867D3F1E7AF4D2001D228A /* bug-254.json */,
 				14867D401E7AF4D2001D228A /* bug-257.json */,
 				14867D411E7AF4D2001D228A /* bug-number-84.json */,
@@ -1838,6 +1843,7 @@
 				14867E7B1E7AF4D2001D228A /* comments-no-id.json in Resources */,
 				14867DEB1E7AF4D2001D228A /* users3.json in Resources */,
 				14867EB71E7AF4D2001D228A /* unique.json in Resources */,
+				B52193CD1F8E2B0E00C8D681 /* bug-239-passenger.json in Resources */,
 				14867E331E7AF4D2001D228A /* 225-a-replaced.json in Resources */,
 				14867E481E7AF4D2001D228A /* 283.json in Resources */,
 				14867E871E7AF4D2001D228A /* images.json in Resources */,
@@ -1921,6 +1927,7 @@
 				14867E7C1E7AF4D2001D228A /* comments-no-id.json in Resources */,
 				14867DEC1E7AF4D2001D228A /* users3.json in Resources */,
 				14867EB81E7AF4D2001D228A /* unique.json in Resources */,
+				B52193CE1F8E2B0F00C8D681 /* bug-239-passenger.json in Resources */,
 				14867E341E7AF4D2001D228A /* 225-a-replaced.json in Resources */,
 				14867E491E7AF4D2001D228A /* 283.json in Resources */,
 				14867E881E7AF4D2001D228A /* images.json in Resources */,
@@ -2004,6 +2011,7 @@
 				14867E7D1E7AF4D2001D228A /* comments-no-id.json in Resources */,
 				14867DED1E7AF4D2001D228A /* users3.json in Resources */,
 				14867EB91E7AF4D2001D228A /* unique.json in Resources */,
+				B52193CF1F8E2B0F00C8D681 /* bug-239-passenger.json in Resources */,
 				14867E351E7AF4D2001D228A /* 225-a-replaced.json in Resources */,
 				14867E4A1E7AF4D2001D228A /* 283.json in Resources */,
 				14867E891E7AF4D2001D228A /* images.json in Resources */,
