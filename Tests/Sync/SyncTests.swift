@@ -1166,6 +1166,39 @@ class SyncTests: XCTestCase {
 		XCTAssertEqual((sedan.value(forKey: "passengers") as? NSSet)!.allObjects.count, 1)
 	}
 
+	func testBug428ToMany() {
+		let passengerObject = Helper.objectsFromJSON("bug-428-to-many.json") as! [[String: Any]]
+		let dataStack = Helper.dataStackWithModelName("428-to-many")
+		defer {
+			dataStack.drop()
+		}
+		dataStack.sync(passengerObject, inEntityNamed: "Passenger", completion: nil)
+		XCTAssertEqual(Helper.countForEntity("Racecar", inContext: dataStack.mainContext), 1)
+		XCTAssertEqual(Helper.countForEntity("Sedan", inContext: dataStack.mainContext), 1)
+		XCTAssertEqual(Helper.countForEntity("Passenger", inContext: dataStack.mainContext), 1)
+
+		let passengers = Helper.fetchEntity("Passenger", predicate: nil, inContext: dataStack.mainContext)
+		guard let passenger = passengers.first else {
+			XCTAssert(true, "No Passenger imported")
+			return
+		}
+		XCTAssertEqual((passenger.value(forKey: "car") as? NSSet)!.allObjects.count, 2)
+
+		let racecars = Helper.fetchEntity("Racecar", predicate: nil, inContext: dataStack.mainContext)
+		guard let racecar = racecars.first else {
+			XCTAssert(true, "No relationships on racecar")
+			return
+		}
+		XCTAssertNotNil((racecar.value(forKey: "passengers") as? NSManagedObject))
+
+		let sedans = Helper.fetchEntity("Sedan", predicate: nil, inContext: dataStack.mainContext)
+		guard let sedan = sedans.first else {
+			XCTAssert(true, "No relationships on sedan")
+			return
+		}
+		XCTAssertNotNil((sedan.value(forKey: "passengers") as? NSManagedObject))
+	}
+
     // MARK: - https://github.com/3lvis/Sync/issues/225
 
     func test225ReplacedTag() {

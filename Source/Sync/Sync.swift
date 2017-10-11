@@ -149,8 +149,14 @@ public protocol SyncDelegate: class {
             let shouldContinue = shouldContinueBlock?() ?? true
             guard shouldContinue else { return }
 
-            let created = NSEntityDescription.insertNewObject(forEntityName: entityName, into: context)
             let interceptedJSON = objectJSONBlock?(JSON) ?? JSON
+			let subclassEntityName: String
+			if let subclassEntityNameKey = entity.sync_subclassEntityName(), let subclassName = JSON[subclassEntityNameKey] as? String {
+				subclassEntityName = subclassName
+			} else {
+				subclassEntityName = entityName
+			}
+			let created = NSEntityDescription.insertNewObject(forEntityName: subclassEntityName, into: context)
             created.sync_fill(with: interceptedJSON, parent: parent, parentRelationship: parentRelationship, context: context, operations: operations, shouldContinueBlock: shouldContinueBlock, objectJSONBlock: objectJSONBlock)
         }) { JSON, updatedObject in
             let shouldContinue = shouldContinueBlock?() ?? true
