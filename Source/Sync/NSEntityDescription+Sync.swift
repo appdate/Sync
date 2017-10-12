@@ -1,5 +1,7 @@
 import CoreData
 
+private let SyncAbstractEntityNameKey = "sync.subclassEntityName"
+
 extension NSEntityDescription {
     /**
      Finds the relationships for the current entity.
@@ -37,4 +39,8 @@ extension NSEntityDescription {
     func sync_parentEntity() -> NSRelationshipDescription? {
         return sync_relationships().filter { $0.destinationEntity?.name == name && !$0.isToMany }.first
     }
+
+	func sync_subclassEntityName() -> String? {
+		return self.userInfo?[SyncAbstractEntityNameKey] as? String
+	}
 }

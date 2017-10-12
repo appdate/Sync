@@ -402,10 +402,17 @@ extension NSManagedObject {
             guard let managedObjectContext = self.managedObjectContext else { return }
             guard let destinationEntity = relationship.destinationEntity else { return }
             guard let entityName = destinationEntity.name else { return }
-            guard let entity = NSEntityDescription.entity(forEntityName: entityName, in: managedObjectContext) else { return }
+
+			let subclassEntityName: String
+			if let subclassEntityNameKey = relationship.destinationEntity?.sync_subclassEntityName(), let subclassName = toOneObjectDictionary[subclassEntityNameKey] as? String {
+				subclassEntityName = subclassName
+			} else {
+				subclassEntityName = entityName
+			}
+            guard let entity = NSEntityDescription.entity(forEntityName: subclassEntityName, in: managedObjectContext) else { return }
 
             let localPrimaryKey = toOneObjectDictionary[entity.sync_remotePrimaryKey()]
-            let object = managedObjectContext.safeObject(entityName, localPrimaryKey: localPrimaryKey, parent: self, parentRelationshipName: relationship.name) ?? NSEntityDescription.insertNewObject(forEntityName: entityName, into: managedObjectContext)
+            let object = managedObjectContext.safeObject(subclassEntityName, localPrimaryKey: localPrimaryKey, parent: self, parentRelationshipName: relationship.name) ?? NSEntityDescription.insertNewObject(forEntityName: subclassEntityName, into: managedObjectContext)
 
             object.sync_fill(with: toOneObjectDictionary, parent: self, parentRelationship: relationship, context: context, operations: operations, shouldContinueBlock: shouldContinueBlock, objectJSONBlock: objectJSONBlock)
 
