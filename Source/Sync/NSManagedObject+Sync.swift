@@ -418,6 +418,9 @@ extension NSManagedObject {
 
             let currentRelationship = self.value(forKey: relationship.name)
             if currentRelationship == nil || !(currentRelationship! as AnyObject).isEqual(object) {
+				if self.managedObjectContext == nil {
+					managedObjectContext.insert(self)
+				}
                 setValue(object, forKey: relationship.name)
             }
         } else {
